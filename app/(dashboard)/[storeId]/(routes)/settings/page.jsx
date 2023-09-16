@@ -2,9 +2,9 @@ import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
 import prismadb from '@/lib/prismadb';
-import Navbar from '@/components/navbar/Navbar';
+import { SettingsForm } from '@/components/SettingsForm';
 
-export default async function DashboardLayout({ children, params }) {
+const SettingsPage = async ({ params }) => {
     const { userId } = auth();
 
     if (!userId) {
@@ -23,9 +23,12 @@ export default async function DashboardLayout({ children, params }) {
     }
 
     return (
-        <>
-            <Navbar />
-            {children}
-        </>
+        <div className="flex-col">
+            <div className="flex-1 space-y-4 p-8 pt-6">
+                <SettingsForm initialData={store} />
+            </div>
+        </div>
     );
-}
+};
+
+export default SettingsPage;
