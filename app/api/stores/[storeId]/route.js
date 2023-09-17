@@ -10,7 +10,7 @@ export async function PATCH(req, { params }) {
         const { name } = body;
 
         if (!userId) {
-            return new NextResponse('Unauthorized', { status: 403 });
+            return new NextResponse('Unauthenticated', { status: 401 });
         }
 
         if (!name) {
@@ -43,7 +43,7 @@ export async function DELETE(req, { params }) {
         const { userId } = auth();
 
         if (!userId) {
-            return new NextResponse('Unauthorized', { status: 403 });
+            return new NextResponse('Unauthenticated', { status: 401 });
         }
 
         if (!params.storeId) {
