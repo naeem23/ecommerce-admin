@@ -8,6 +8,7 @@ import {
     PlusCircle,
     Store as StoreIcon,
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 import { useStoreModal } from '@/hooks/useStoreModal';
 import {
@@ -16,7 +17,6 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import {
     Command,
     CommandEmpty,

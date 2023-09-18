@@ -6,8 +6,11 @@ import { Plus } from 'lucide-react';
 import { Heading } from '@/components/Heading';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { DataTable } from '@/components/data-table';
+import { columns } from '@/components/billboard/columns';
+import ApiList from '@/components/api-list';
 
-export const BillboardClient = () => {
+export const BillboardClient = ({ data }) => {
     const router = useRouter();
     const params = useParams();
 
@@ -15,7 +18,7 @@ export const BillboardClient = () => {
         <>
             <div className="flex justify-between items-center">
                 <Heading
-                    title="Billboards (0)"
+                    title={`Billboards (${data.length})`}
                     description="Manage billboards for your store"
                 />
                 <Button
@@ -28,6 +31,11 @@ export const BillboardClient = () => {
                 </Button>
             </div>
             <Separator />
+            <DataTable searchKey="label" columns={columns} data={data} />
+
+            <Heading title="API" description="API calls for Billboards" />
+            <Separator />
+            <ApiList entityName="billboards" entityIdName="billboardId" />
         </>
     );
 };

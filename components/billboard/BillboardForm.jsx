@@ -1,10 +1,10 @@
 'use client';
 
 import * as z from 'zod';
-import { Trash } from 'lucide-react';
-import { useState } from 'react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { Trash } from 'lucide-react';
+import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,8 +22,7 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useOrigin } from '@/hooks/useOrigin';
-import ImageUpload from './ImageUpload';
+import { ImageUpload } from '@/components/billboard/ImageUpload';
 
 const formSchema = z.object({
     label: z.string().min(3),
@@ -33,7 +32,6 @@ const formSchema = z.object({
 export const BillboardForm = ({ initialData }) => {
     const params = useParams();
     const router = useRouter();
-    const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -84,7 +82,7 @@ export const BillboardForm = ({ initialData }) => {
                 `/api/${params.storeId}/billboards/${params.billboardId}`
             );
             router.refresh();
-            router.push('/');
+            router.push(`/${params.storeId}/billboards`);
             toast.success('Billboard deleted.');
         } catch (error) {
             console.log(error);

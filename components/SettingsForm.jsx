@@ -1,13 +1,13 @@
 'use client';
 
 import * as z from 'zod';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 import { Trash } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import toast from 'react-hot-toast';
-import axios from 'axios';
 import { useParams, useRouter } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/Heading';

@@ -7,7 +7,7 @@ import { CldUploadWidget } from 'next-cloudinary';
 
 import { Button } from '@/components/ui/button';
 
-const ImageUpload = ({ disabled, onChange, onRemove, value }) => {
+export const ImageUpload = ({ disabled, onChange, onRemove, value }) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -66,5 +66,3 @@ const ImageUpload = ({ disabled, onChange, onRemove, value }) => {
         </>
     );
 };
-
-export default ImageUpload;
