@@ -4,7 +4,7 @@ import { ApiAlert } from '@/components/ApiAlert';
 import { useOrigin } from '@/hooks/useOrigin';
 import { useParams } from 'next/navigation';
 
-const ApiList = ({ entityName, entityIdName }) => {
+export const ApiList = ({ entityName, entityIdName }) => {
     const params = useParams();
     const origin = useOrigin();
 
@@ -40,5 +40,3 @@ const ApiList = ({ entityName, entityIdName }) => {
         </>
     );
 };
-
-export default ApiList;

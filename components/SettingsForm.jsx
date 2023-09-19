@@ -46,8 +46,8 @@ export const SettingsForm = ({ initialData }) => {
         try {
             setLoading(true);
             await axios.patch(`/api/stores/${params.storeId}`, data);
-            router.refresh();
             toast.success('Store updated.');
+            router.refresh();
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong.');
@@ -60,9 +60,9 @@ export const SettingsForm = ({ initialData }) => {
         try {
             setLoading(true);
             await axios.delete(`/api/stores/${params.storeId}`);
+            toast.success('Store deleted.');
             router.refresh();
             router.push('/');
-            toast.success('Store deleted.');
         } catch (error) {
             console.log(error);
             toast.error(

@@ -1,10 +1,10 @@
 'use client';
 
-import toast from 'react-hot-toast';
 import axios from 'axios';
-import { Copy, Edit, MoreHorizontal, Trash } from 'lucide-react';
+import toast from 'react-hot-toast';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { Copy, Edit, MoreHorizontal, Trash } from 'lucide-react';
 
 import {
     DropdownMenu,
@@ -13,12 +13,12 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
 import { AlertModal } from '@/components/modals/AlertModal';
+import { Button } from '@/components/ui/button';
 
 export const CellAction = ({ data }) => {
-    const router = useRouter();
     const params = useParams();
+    const router = useRouter();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -26,13 +26,13 @@ export const CellAction = ({ data }) => {
     const onDelete = async () => {
         try {
             setLoading(true);
-            await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
-            toast.success('Billboard deleted.');
+            await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
+            toast.success('Category deleted.');
             router.refresh();
         } catch (error) {
             console.log(error);
             toast.error(
-                'Make sure you removed all categories using this billboard first.'
+                'Make sure you removed all products using this category first.'
             );
         } finally {
             setLoading(false);
@@ -42,7 +42,7 @@ export const CellAction = ({ data }) => {
 
     const onCopy = (id) => {
         navigator.clipboard.writeText(id);
-        toast.success('Billboard ID copied to clipboard.');
+        toast.success('Category ID copied to clipboard.');
     };
 
     return (
@@ -74,7 +74,7 @@ export const CellAction = ({ data }) => {
                     <DropdownMenuItem
                         onClick={() =>
                             router.push(
-                                `/${params.storeId}/billboards/${data.id}`
+                                `/${params.storeId}/categories/${data.id}`
                             )
                         }
                         className="cursor-pointer"

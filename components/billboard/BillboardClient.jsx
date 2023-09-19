@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { DataTable } from '@/components/data-table';
 import { columns } from '@/components/billboard/columns';
-import ApiList from '@/components/api-list';
+import { ApiList } from '@/components/api-list';
 
 export const BillboardClient = ({ data }) => {
     const router = useRouter();

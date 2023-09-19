@@ -2,7 +2,7 @@ import { auth, UserButton } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
 import prismadb from '@/lib/prismadb';
-import { MainNav } from '@/components/navbar/MainNav';
+import { MainNav } from '@/components/navbar/main-nav';
 import { StoreSwitcher } from '@/components/navbar/StoreSwitcher';
 
 const Navbar = async () => {
