@@ -1,0 +1,46 @@
+import { format } from 'date-fns';
+
+import prismadb from '@/lib/prismadb';
+import { formatter } from '@/lib/utils';
+
+import { ProductClient } from '@/components/product/product-client';
+
+const ProductsPage = async ({ params }) => {
+    const products = await prismadb.product.findMany({
+        where: {
+            storeId: params.storeId,
+        },
+        include: {
+            images: true,
+            category: true,
+            size: true,
+            color: true,
+        },
+        orderBy: {
+            createdAt: 'desc',
+        },
+    });
+
+    const formattedProducts = products.map((item) => ({
+        id: item.id,
+        name: item.name,
+        isFeatured: item.isFeatured,
+        isArchived: item.isArchived,
+        price: formatter.format(item.price),
+        category: item.category.name,
+        size: item.size.value,
+        color: item.color.value,
+        image: item.images?.[0]?.url,
+        createdAt: format(item.createdAt, 'MMM d, yyyy'),
+    }));
+
+    return (
+        <div className="flex-col">
+            <div className="flex-1 space-y-4 p-8 pt-6">
+                <ProductClient data={formattedProducts} />
+            </div>
+        </div>
+    );
+};
+
+export default ProductsPage;

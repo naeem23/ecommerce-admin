@@ -22,7 +22,7 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { ImageUpload } from '@/components/billboard/ImageUpload';
+import { ImageUpload } from '@/components/image-upload';
 
 const formSchema = z.object({
     label: z.string().min(3),
