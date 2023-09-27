@@ -107,6 +107,12 @@ export async function GET(req, { params }) {
                 isFeatured,
                 isArchived: false,
             },
+            include: {
+                images: true,
+                category: true,
+                color: true,
+                size: true,
+            },
             orderBy: {
                 createdAt: 'desc',
             },
